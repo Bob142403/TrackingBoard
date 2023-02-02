@@ -12,7 +12,10 @@ function Board({ status }: Props) {
   const tasks = useSelector(getTasks).filter((task) => task.status === status);
   return (
     <div className="board mx-3">
-      <div className="fw-bold">{status}</div>
+      <div className="d-flex">
+        <div className="fw-bold">{status}</div>
+        <div className="mx-1 text-secondary fw-bold">{tasks.length}</div>
+      </div>
       {tasks.map((task) => (
         <Card key={task.id} title={task.title} />
       ))}
