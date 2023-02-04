@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { clickedTask } from "../../../store/tasks-reducer";
+import "./add-task.css";
 
 interface Props {
   status: string;
@@ -9,14 +10,15 @@ function AddTask({ status }: Props) {
   const dispatch = useDispatch();
   const setStatus = () => dispatch(clickedTask(status));
   return (
-    <button
-      data-bs-target="#staticBackdrop"
-      data-bs-toggle="modal"
-      className="btn btn-outline-success"
-      onClick={setStatus}
-    >
-      Add Task
-    </button>
+    <div onClick={setStatus} className="add-task">
+      <img
+        src={require("../../../assets/images/addButton.svg").default}
+        className="img"
+      />
+      <div data-bs-target="#staticBackdrop" data-bs-toggle="modal">
+        Add Task
+      </div>
+    </div>
   );
 }
 

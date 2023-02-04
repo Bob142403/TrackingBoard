@@ -1,0 +1,10 @@
+.img {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+}
+.add-task {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}

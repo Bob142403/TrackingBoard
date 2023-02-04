@@ -1,3 +1,12 @@
 .card-width {
-    width: 25rem;
+  width: 20rem;
+  cursor: pointer;
+}
+.card-img {
+  width: 16px;
+  height: 16px;
+  margin: 4px;
+}
+.card-text{
+  width: 90%;
 }

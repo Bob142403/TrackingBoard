@@ -43,7 +43,11 @@ function Modal() {
             >
               Save
             </button>
-            <button className="btn btn-secondary" data-bs-dismiss="modal">
+            <button
+              className="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onClick={() => setTitle("")}
+            >
               Close
             </button>
           </div>

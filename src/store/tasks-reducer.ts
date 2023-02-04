@@ -24,10 +24,21 @@ export const taskSlice = createSlice({
     clickedTask(state, action) {
       state.status = action.payload;
     },
+    addTaskById(state, action) {
+      const [removedTask] = state.tasks.splice(action.payload.id, 1);
+      if (
+        action.payload.id < action.payload.newId &&
+        removedTask.status != action.payload.newStatus
+      ) {
+        action.payload.newId--;
+      }
+      removedTask.status = action.payload.newStatus;
+      state.tasks.splice(action.payload.newId, 0, removedTask);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTask, clickedTask } = taskSlice.actions;
+export const { addTask, clickedTask, addTaskById } = taskSlice.actions;
 
 export default taskSlice.reducer;
