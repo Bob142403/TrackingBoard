@@ -1,5 +1,7 @@
 import { Draggable, Droppable } from "react-beautiful-dnd";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { clearTasks } from "../../store/tasks-reducer";
 import { getTasks } from "../../store/tasks-selector";
 import AddTask from "../components/add-task/add-task";
 import Card from "../components/card/card";
@@ -11,13 +13,36 @@ interface Props {
 
 function Board({ status }: Props) {
   const tasks = useSelector(getTasks);
+  const dispatch = useDispatch();
   const filteredTasks = tasks.filter((task) => task.status === status);
   return (
     <div className="board mx-3">
-      <div className="d-flex">
-        <div className="fw-bold">{status}</div>
-        <div className="mx-1 text-secondary fw-bold">
-          {filteredTasks.length}
+      <div className="board-title">
+        <div className="d-flex">
+          <div className="fw-bold">{status}</div>
+          <div className="mx-1 text-secondary fw-bold">
+            {filteredTasks.length}
+          </div>
+        </div>
+        <div className="dropup-center">
+          <img
+            src={require("../../assets/images/ellipsis_horizontal.svg").default}
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          />
+          <ul className="dropdown-menu">
+            <li>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => {
+                  dispatch(clearTasks(status));
+                }}
+              >
+                Clear
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <Droppable droppableId={status}>

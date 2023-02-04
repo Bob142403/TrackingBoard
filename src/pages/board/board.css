@@ -1,3 +1,13 @@
 .board {
-    width: 23%;
+    width: 20%;
+}
+.board-ellipses {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.board-title {
+    display: flex;
+    justify-content: space-between;
 }

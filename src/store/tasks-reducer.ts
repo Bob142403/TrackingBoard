@@ -35,10 +35,15 @@ export const taskSlice = createSlice({
       removedTask.status = action.payload.newStatus;
       state.tasks.splice(action.payload.newId, 0, removedTask);
     },
+    clearTasks(state, action) {
+      state.tasks = state.tasks.filter(
+        (task) => task.status !== action.payload
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTask, clickedTask, addTaskById } = taskSlice.actions;
+export const { addTask, clickedTask, addTaskById, clearTasks } = taskSlice.actions;
 
 export default taskSlice.reducer;
