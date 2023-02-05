@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { stat } from "fs";
 import { Task } from "../types/task";
 
 interface TaskState {
   tasks: Task[];
+  titles: string[];
   status: string;
 }
 
 const initialState: TaskState = {
   tasks: [],
+  titles: ["New", "In Progress", "In Review", "Fixed"],
   status: "",
 };
 
@@ -40,10 +43,15 @@ export const taskSlice = createSlice({
         (task) => task.status !== action.payload
       );
     },
+    swapTitles(state, action) {
+      const [removedTitle] = state.titles.splice(action.payload.id, 1)
+      state.titles.splice(action.payload.newId, 0, removedTitle);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTask, clickedTask, addTaskById, clearTasks } = taskSlice.actions;
+export const { addTask, clickedTask, addTaskById, clearTasks, swapTitles } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;

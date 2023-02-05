@@ -2,9 +2,11 @@
   width: 25px;
   height: 25px;
   margin: 2px;
+  cursor: pointer;
 }
 .add-task {
   cursor: pointer;
   display: flex;
+  width: 30%;
   align-items: center;
 }

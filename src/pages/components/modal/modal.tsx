@@ -8,8 +8,10 @@ function Modal() {
   const [title, setTitle] = useState("");
   const status = useSelector(getClickedTask);
   const addtask = () => {
-    dispatch(addTask({ title, status }));
-    setTitle("");
+    if (title.trim()) {
+      dispatch(addTask({ title, status }));
+      setTitle("");
+    }
   };
   return (
     <div

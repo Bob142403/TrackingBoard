@@ -10,14 +10,17 @@ function AddTask({ status }: Props) {
   const dispatch = useDispatch();
   const setStatus = () => dispatch(clickedTask(status));
   return (
-    <div onClick={setStatus} className="add-task">
+    <div
+      onClick={setStatus}
+      className="add-task"
+      data-bs-target="#staticBackdrop"
+      data-bs-toggle="modal"
+    >
       <img
         src={require("../../../assets/images/addButton.svg").default}
         className="img"
       />
-      <div data-bs-target="#staticBackdrop" data-bs-toggle="modal">
-        Add Task
-      </div>
+      Add Task
     </div>
   );
 }
